@@ -29,7 +29,7 @@ const router = express.Router();
  * Matches: /management and /subscription respectively.
  *
  * Description:
- *  If the rquest url matches one of the router.use calls, then the routes used are in the
+ *  If the request url matches one of the router.use calls, then the routes used are in the
  *  required file.
  */
 router.use("/management", managementRoute);
@@ -53,7 +53,7 @@ router.get("/", async (req, res, next) => {
 
     if (customers.length === 0) {
       // throw error to remind the possible issue
-      throw new Error("No valid customer retreived, this example only works with customers that have email information.");
+      throw new Error("No valid customer retrieved, this example only works with customers that have email information.");
     }
 
     // Render the customer list homepage

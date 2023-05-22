@@ -18,14 +18,42 @@ const { Client, Environment } = require("square");
 const axios = require("axios").default;
 const colors = require("colors");
 
+// ROS: Using WebStorm environment variables.
+/*
+let bEnvOk =
+  (process.env.NODE_ENV || process.env.SQUARE_ACCESS_TOKEN);
+
+if (!bEnvOk) {
+  const warningMessage = `WARNING: Environment variables not found.  Aborting.`;
+
+  console.error(colors.bold.yellow(warningMessage));
+
+  process.exit(1);
+}
+
+if (false) {
+  // Load environment variables from .env file
+  const { error } = require("dotenv").config();
+
+  if (error && process.env.NODE_ENV !== "production") {
+    const warningMessage = `WARNING: Failed to load .env file. Be sure that create a .env file at the root of this examples directory
+or set environment variables.You can find an example in the .env.example file provided.`;
+
+    console.error(colors.bold.yellow(warningMessage));
+  }
+}
+*/
+
 // Load environment variables from .env file
 const { error } = require("dotenv").config();
+
 if (error && process.env.NODE_ENV !== "production") {
   const warningMessage = `WARNING: Failed to load .env file. Be sure that create a .env file at the root of this examples directory
 or set environment variables.You can find an example in the .env.example file provided.`;
 
   console.error(colors.bold.yellow(warningMessage));
 }
+
 // Set Square Connect credentials
 const config = {
   environment: process.env.NODE_ENV,
@@ -43,7 +71,7 @@ const {
 } = new Client(config);
 
 /**
- * This utlity method is used to clear the `canceledDate` field of a subscription.
+ * This utility method is used to clear the `canceledDate` field of a subscription.
  * This method sends a request to the UpdateSubscription endpoint to update the
  * `canceled_date` field to be null.
  *
